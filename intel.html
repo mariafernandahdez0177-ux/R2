@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R2 Moto Refacciones - Tu Tienda de Confianza</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a0000 50%, #000033 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid;
+            border-image: linear-gradient(90deg, #e31e24, #0066cc) 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .logo-r2 {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #e31e24, #0066cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(227, 30, 36, 0.8);
+            letter-spacing: 3px;
+            filter: drop-shadow(0 0 20px rgba(227, 30, 36, 0.6));
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-moto {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .logo-refacciones {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #aaa;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #e31e24;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        radial-gradient(circle at 30% 50%, rgba(227, 30, 36, 0.2), transparent),
+                        radial-gradient(circle at 70% 50%, rgba(0, 102, 204, 0.2), transparent),
+                        #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 50px,
+                rgba(227, 30, 36, 0.03) 50px,
+                rgba(227, 30, 36, 0.03) 100px
+            );
+            animation: moveLines 20s linear infinite;
+        }
+
+        @keyframes moveLines {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-r2 {
+            font-size: 7rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #e31e24, #0066cc, #e31e24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 8px;
+            filter: drop-shadow(0 0 30px rgba(227, 30, 36, 0.8));
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { filter: drop-shadow(0 0 30px rgba(227, 30, 36, 0.8)); }
+            50% { filter: drop-shadow(0 0 50px rgba(227, 30, 36, 1)); }
+        }
+
+        .hero-subtitle {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            font-size: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-moto {
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 3px;
+        }
+
+        .hero-refacciones {
+            font-weight: 300;
+            color: #999;
+            letter-spacing: 5px;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #bbb;
+            margin-top: 1.5rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #e31e24, #0066cc);
+            color: #fff;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(227, 30, 36, 0.4);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(227, 30, 36, 0.6);
+        }
+
+        .catalog-section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 50vh;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #e31e24, #0066cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+        }
+
+        .empty-catalog {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #888;
+            font-size: 1.2rem;
+        }
+
+        .empty-catalog-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .contact-section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: linear-gradient(145deg, rgba(227, 30, 36, 0.1), rgba(0, 102, 204, 0.1));
+            border: 2px solid rgba(227, 30, 36, 0.3);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(227, 30, 36, 0.3);
+            border-color: #e31e24;
+        }
+
+        .contact-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .contact-info {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #e31e24, #0066cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .call-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #e31e24, #0066cc);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .call-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(227, 30, 36, 0.5);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 3px solid;
+            border-image: linear-gradient(90deg, #e31e24, #0066cc) 1;
+        }
+
+        @media (max-width: 768px) {
+            .logo-r2 {
+                font-size: 2rem;
+            }
+
+            .logo-moto {
+                font-size: 1rem;
+            }
+
+            .logo-refacciones {
+                font-size: 0.7rem;
+            }
+
+            .hero-r2 {
+                font-size: 4rem;
+            }
+            
+            .hero-subtitle {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
+            .hero-moto {
+                font-size: 2rem;
+            }
+
+            .hero-refacciones {
+                font-size: 1.3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-r2">R2</div>
+                <div class="logo-text">
+                    <span class="logo-moto">MOTO</span>
+                    <span class="logo-refacciones">refacciones</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-title">
+                <div class="hero-r2">R2</div>
+                <div class="hero-subtitle">
+                    <span class="hero-moto">MOTO</span>
+                    <span class="hero-refacciones">refacciones</span>
+                </div>
+            </div>
+            <p>Las mejores piezas y accesorios para tu motocicleta</p>
+            <a href="#catalogo" class="cta-button">Ver Productos</a>
+        </div>
+    </section>
+
+    <section class="catalog-section" id="catalogo">
+        <h2 class="section-title">Nuestro Catálogo</h2>
+        <p class="section-subtitle">Refacciones de calidad para tu moto</p>
+
+        <div class="empty-catalog">
+            <div class="empty-catalog-icon">🔧</div>
+            <p>El catálogo estará disponible próximamente</p>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+        <div class="contact-wrapper">
+            <div class="contact-left">
+                <h2 class="contact-main-title">¿Necesitas ayuda?</h2>
+                <p class="contact-description">Contáctanos y con gusto te atenderemos</p>
+                
+                <div class="info-box">
+                    <div class="info-item">
+                        <div class="info-label">👤 Atención personalizada</div>
+                        <div class="info-value">Daniel Torres</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">📱 Teléfono</div>
+                        <div class="info-value">564 379 3310</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">⏰ Horario</div>
+                        <div class="info-value">Lun - Sáb: 9:00 AM - 7:00 PM</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-right">
+                <div class="cta-box">
+                    <div class="cta-icon">💬</div>
+                    <h3>Agenda tu cita</h3>
+                    <p>Comunícate con nosotros vía WhatsApp</p>
+                    <a href="https://wa.me/525643793310?text=Hola%2C%20me%20gustaría%20agendar%20una%20cita%20para%20mi%20moto" class="whatsapp-button" target="_blank">
+                        <span class="whatsapp-icon">📲</span>
+                        Agendar por WhatsApp
+                    </a>
+                </div>
+                
+                <div class="cta-box">
+                    <div class="cta-icon">📞</div>
+                    <h3>Llámanos directo</h3>
+                    <p>Estamos listos para atenderte</p>
+                    <a href="tel:5643793310" class="call-button-alt">
+                        Llamar ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 R2 Moto Refacciones. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
